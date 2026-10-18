@@ -6,11 +6,12 @@ A one-page website that scores five macro scenarios for rates, oil and stocks th
 
 - `index.html` in this folder is the whole site. It has no build step and no dependencies to install. `og.png` is the link-preview image (source: `tools/og-card.html`).
 - A shared copy also lives as a claude.ai artifact: https://claude.ai/artifact/XT5pRvBAoV1X8WwxyjNvtT
-- This folder is a git repository on branch `main` (created Oct 18, 2026). The plan is a GitHub repository `macro-scenario-tracker` that Vercel and Netlify both deploy on every push to `main`.
-  - Status on Oct 18, 2026: no GitHub remote yet (Allen has to sign in to GitHub once), no Vercel or Netlify project yet, custom domain not bought. Check `git remote -v` before assuming any of it exists.
-  - Vercel (team `sentinelclawsons-projects`): framework preset "Other", no build command, output directory is the root. Vercel holds the custom domain.
-  - Netlify: settings come from `netlify.toml` (no build, publish the root). It serves as the backup copy on its netlify.app address.
-- `og:image` and `twitter:image` are relative (`og.png`) until a domain is live. Once one is, make them absolute URLs on that domain (a design commit).
+- This folder is a git repository on branch `main`. Its remote `origin` is the public GitHub repository https://github.com/sentinelclawson/macro-scenario-tracker. Vercel and Netlify should both deploy it on every push to `main`.
+- Public address for now (free, no custom domain): https://macro-scenario-tracker.netlify.app. The canonical link, `og:url`, `og:image` and `twitter:image` all point there.
+  - Netlify site `macro-scenario-tracker` (team slug `sentinelclawson`, site id `30cf9383-4778-4809-b1d2-e3c6ffff668b`). Settings come from `netlify.toml` (no build, publish the root). On Oct 18, 2026 it had no deploy yet and was not yet linked to the GitHub repository; its visitor access was set to require Netlify team login on all deploys, which must be limited to non-production so readers can see it.
+  - Vercel (team `sentinelclawsons-projects`): project not created yet on Oct 18, 2026 (the connector has no permission to create projects). Allen imports the GitHub repository in the Vercel dashboard as `macro-scenario-tracker` with framework preset "Other", no build command, output directory the root. `macro-scenario-tracker.vercel.app` was unclaimed then.
+  - Custom domain: not bought. macroscenariotracker.com was available for $11.25 a year. If one is bought later, move the canonical and preview tags to it in a design commit.
+- Pushing needs GitHub credentials in Git Credential Manager. Allen signs in once with `git push -u origin main`; after that the Monday run can push without prompts.
 
 ## How it updates
 
