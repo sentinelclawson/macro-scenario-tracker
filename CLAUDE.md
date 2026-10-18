@@ -6,11 +6,11 @@ A one-page website that scores five macro scenarios for rates, oil and stocks th
 
 - `index.html` in this folder is the whole site. It has no build step and no dependencies to install. `og.png` is the link-preview image (source: `tools/og-card.html`).
 - A shared copy also lives as a claude.ai artifact: https://claude.ai/artifact/XT5pRvBAoV1X8WwxyjNvtT
-- This folder is a git repository on branch `main`. Its remote `origin` is the public GitHub repository https://github.com/sentinelclawson/macro-scenario-tracker. Vercel and Netlify should both deploy it on every push to `main`.
-- Public address for now (free, no custom domain): https://macro-scenario-tracker.netlify.app. The canonical link, `og:url`, `og:image` and `twitter:image` all point there.
-  - Netlify site `macro-scenario-tracker` (team slug `sentinelclawson`, site id `30cf9383-4778-4809-b1d2-e3c6ffff668b`). Settings come from `netlify.toml` (no build, publish the root). On Oct 18, 2026 it had no deploy yet and was not yet linked to the GitHub repository; its visitor access was set to require Netlify team login on all deploys, which must be limited to non-production so readers can see it.
-  - Vercel (team `sentinelclawsons-projects`): project not created yet on Oct 18, 2026 (the connector has no permission to create projects). Allen imports the GitHub repository in the Vercel dashboard as `macro-scenario-tracker` with framework preset "Other", no build command, output directory the root. `macro-scenario-tracker.vercel.app` was unclaimed then.
-  - Custom domain: not bought. macroscenariotracker.com was available for $11.25 a year. If one is bought later, move the canonical and preview tags to it in a design commit.
+- This folder is a git repository on branch `main`. Its remote `origin` is the public GitHub repository https://github.com/sentinelclawson/macro-scenario-tracker. Vercel and Netlify both deploy it automatically on every push to `main` (live since Oct 18, 2026).
+- Live addresses (free, no custom domain). The canonical link, `og:url`, `og:image` and `twitter:image` point to the Netlify one.
+  - https://macro-scenario-tracker.netlify.app: Netlify site `macro-scenario-tracker`, team "CAE Automation" (slug `sentinelclawson`), site id `30cf9383-4778-4809-b1d2-e3c6ffff668b`. Linked to the GitHub repository, branch `main`; settings come from `netlify.toml` (no build, publish the root). Production is public; deploy previews stay private to the team. On the free plan Netlify injects a hosting comment and a small "Powered by Netlify" badge into the served page.
+  - https://macro-scenario-tracker.vercel.app: Vercel project `macro-scenario-tracker` (id `prj_tezLwbBpoHUGfugRUkVP8T3B89By`) in team `sentinelclawsons-projects`, production branch `main`, no framework, no build. The Vercel GitHub app is installed on this one repository only. Serves the file exactly as committed.
+  - Custom domain: not bought. macroscenariotracker.com was available for $11.25 a year. If one is bought later, attach it in Vercel or Netlify and move the canonical and preview tags to it in a design commit.
 - Pushing uses GitHub credentials saved in Git Credential Manager. Allen signed in on Oct 18, 2026, and a push with prompts disabled works.
 
 ## How it updates
