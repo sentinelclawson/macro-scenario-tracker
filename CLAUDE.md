@@ -4,15 +4,30 @@ A one-page website that scores five macro scenarios for rates, oil and stocks th
 
 ## Where it lives
 
-- `index.html` in this folder is the whole site. It has no build step and no dependencies to install.
+- `index.html` in this folder is the whole site. It has no build step and no dependencies to install. `og.png` is the link-preview image (source: `tools/og-card.html`).
 - A shared copy also lives as a claude.ai artifact: https://claude.ai/artifact/XT5pRvBAoV1X8WwxyjNvtT
-- This folder is the GitHub repository `macro-scenario-tracker`. Vercel and Netlify both deploy it automatically on every push to `main`.
-  - Vercel: framework preset "Other", no build command, output directory is the root.
-  - Netlify: settings come from `netlify.toml` (no build, publish the root).
+- This folder is a git repository on branch `main` (created Oct 18, 2026). The plan is a GitHub repository `macro-scenario-tracker` that Vercel and Netlify both deploy on every push to `main`.
+  - Status on Oct 18, 2026: no GitHub remote yet (Allen has to sign in to GitHub once), no Vercel or Netlify project yet, custom domain not bought. Check `git remote -v` before assuming any of it exists.
+  - Vercel (team `sentinelclawsons-projects`): framework preset "Other", no build command, output directory is the root. Vercel holds the custom domain.
+  - Netlify: settings come from `netlify.toml` (no build, publish the root). It serves as the backup copy on its netlify.app address.
+- `og:image` and `twitter:image` are relative (`og.png`) until a domain is live. Once one is, make them absolute URLs on that domain (a design commit).
 
 ## How it updates
 
-The scheduled task "Macro Scenario Tracker" runs Mondays at 6:54 AM ET. It researches the week, re-scores the odds, writes a new week into the data block, republishes the claude.ai artifact, and commits `index.html` here. The artifact copy has no `<html>`/`<head>` wrapper; this site copy does. Weekly updates change only the data block, so the same JSON goes into both.
+The scheduled task "Macro Scenario Tracker" (task id `macro-scenario-tracker`) runs Mondays at 6:54 AM ET. It researches the week, re-scores the odds, writes a new week into the data block, republishes the claude.ai artifact, commits `index.html` here, and pushes when a remote exists. Allen chose fully automatic publishing: the run never waits for approval. The artifact copy has no `<html>`/`<head>` wrapper; this site copy does. Weekly updates change only the data block, so the same JSON goes into both.
+
+`tools/tracker.py` (standard library only, run as `python -I tools/tracker.py <command>` from this folder):
+
+- `fred`: latest FRED readings for the snapshot rows, including the high-yield spread (`BAMLH0A0HYM2`).
+- `latest OUT.json`: the latest week, pretty-printed, to copy and edit.
+- `add-week WEEK.json`: checks the week and writes it into the data block (replaces a week with the same date).
+- `validate`: every rule in this file that a script can check. It warns when a scenario moves more than 8 points.
+- `artifact OUT.html`: the claude.ai copy (everything from `<title>` in the head, plus the body).
+- `og`: re-renders `og.png` with headless Chrome.
+
+Data sources that must not be mixed: Brent is the ICE front-month futures price (FRED `DCOILBRENTEU` is dated spot and ran about $20 to $25 above futures in October 2026). The 30Y mortgage is the Mortgage News Daily daily index, not Freddie Mac's weekly survey. The high-yield row uses `kind` "rate" with the value in percent (3.23) and `fmt` in bps ("323 bps").
+
+Week changes are colored by meaning, not direction: green leans deal, red leans stress. The polarity lives in `GPOL` (fork groups) and `POL` (snapshot rows) in the page script. A new snapshot row needs an entry in `POL`.
 
 ## The data block
 
@@ -41,7 +56,7 @@ All content lives in one JSON block in `index.html`:
 
 - Never use the em dash or en dash character anywhere: page, data, commit messages, code comments. Use commas, colons, parentheses or periods.
 - Weekly updates touch only the JSON block. Design changes are separate commits.
-- Validate before committing: the JSON parses, odds sum to 100, every path has 5 numbers, and the JSON contains no `</script`.
+- Validate before committing: the JSON parses, odds sum to 100, every path has 5 numbers, and the JSON contains no `</script`. `python -I tools/tracker.py validate` checks all of these and more.
 - The page must work at phone width, in light and dark mode, and print cleanly on white.
 - Libraries: Chart.js 4.4.1 from cdnjs and Google Fonts only. No build tools.
 - No secrets, tokens or keys in this repository.
@@ -49,4 +64,4 @@ All content lives in one JSON block in `index.html`:
 
 ## Related tools on Allen's computer
 
-`macro_signal_tracker.py` (FRED-based regime falsifiers) and `stir_dashboard.py` (Fed pricing) could feed this page later. That's a future project, not part of the weekly update.
+`macro_signal_tracker.py` (FRED-based regime falsifiers) and `stir_dashboard.py` (Fed pricing) could feed this page later. That's a future project, not part of the weekly update. As of Oct 18, 2026 neither file could be found under the user folder, and Allen doesn't know where they are.
