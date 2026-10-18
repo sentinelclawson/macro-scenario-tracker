@@ -11,7 +11,7 @@ A one-page website that scores five macro scenarios for rates, oil and stocks th
   - Netlify site `macro-scenario-tracker` (team slug `sentinelclawson`, site id `30cf9383-4778-4809-b1d2-e3c6ffff668b`). Settings come from `netlify.toml` (no build, publish the root). On Oct 18, 2026 it had no deploy yet and was not yet linked to the GitHub repository; its visitor access was set to require Netlify team login on all deploys, which must be limited to non-production so readers can see it.
   - Vercel (team `sentinelclawsons-projects`): project not created yet on Oct 18, 2026 (the connector has no permission to create projects). Allen imports the GitHub repository in the Vercel dashboard as `macro-scenario-tracker` with framework preset "Other", no build command, output directory the root. `macro-scenario-tracker.vercel.app` was unclaimed then.
   - Custom domain: not bought. macroscenariotracker.com was available for $11.25 a year. If one is bought later, move the canonical and preview tags to it in a design commit.
-- Pushing needs GitHub credentials in Git Credential Manager. Allen signs in once with `git push -u origin main`; after that the Monday run can push without prompts.
+- Pushing uses GitHub credentials saved in Git Credential Manager. Allen signed in on Oct 18, 2026, and a push with prompts disabled works.
 
 ## How it updates
 
