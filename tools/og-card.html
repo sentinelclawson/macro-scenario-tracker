@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Preview card source</title>
+<!-- Source for og.png (1200 x 630). Rebuild with: python -I tools/tracker.py og -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+body{background:#0e1217;color:#e5e9ef;font-family:"Public Sans",system-ui,sans-serif;position:relative}
+.rule{position:absolute;left:0;top:0;width:1200px;height:6px;display:flex}
+.rule span{flex:1}
+.card{position:absolute;left:0;top:0;bottom:0;width:700px;padding:74px 0 60px 72px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between}
+.eyebrow{font-weight:600;font-size:19px;letter-spacing:.13em;text-transform:uppercase;color:#9aa4b3}
+h1{font-family:"Archivo",sans-serif;font-stretch:82%;font-weight:780;font-size:90px;line-height:1;margin:22px 0 0;letter-spacing:-.012em}
+.sub{font-size:27px;color:#c3cad5;margin-top:24px;line-height:1.35}
+.legend{display:grid;grid-template-columns:repeat(2,max-content);gap:12px 34px;font:500 19px "IBM Plex Mono",monospace;color:#c3cad5}
+.legend span{display:inline-flex;align-items:center;gap:11px}
+.legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.foot{font-size:17px;color:#8c96a4;margin-top:22px}
+svg{position:absolute;right:0;top:0}
+</style>
+</head>
+<body>
+<div class="rule"><span style="background:#43c08d"></span><span style="background:#64a0ec"></span><span style="background:#e2a93c"></span><span style="background:#ef8655"></span><span style="background:#f16b7d"></span></div>
+<svg width="600" height="630" viewBox="0 0 600 630" aria-hidden="true">
+  <g stroke="#1e252e" stroke-width="2">
+    <line x1="40" y1="120" x2="600" y2="120"/><line x1="40" y1="210" x2="600" y2="210"/><line x1="40" y1="300" x2="600" y2="300"/>
+    <line x1="40" y1="390" x2="600" y2="390"/><line x1="40" y1="480" x2="600" y2="480"/>
+  </g>
+  <g fill="none" stroke-width="5" stroke-linecap="round">
+    <path d="M40 300 C 210 285, 370 185, 560 112" stroke="#43c08d"/>
+    <path d="M40 300 C 190 335, 340 300, 560 192" stroke="#64a0ec" stroke-dasharray="14 8"/>
+    <path d="M40 300 C 210 312, 390 268, 560 268" stroke="#e2a93c" stroke-dasharray="26 9"/>
+    <path d="M40 300 C 200 342, 370 420, 560 452" stroke="#ef8655" stroke-dasharray="4 9"/>
+    <path d="M40 300 C 130 430, 270 486, 560 372" stroke="#f16b7d" stroke-dasharray="18 7 4 7"/>
+    <path d="M40 300 C 220 300, 390 262, 560 250" stroke="#9aa4b3" stroke-width="4" stroke-dasharray="8 9" opacity=".8"/>
+  </g>
+  <circle cx="40" cy="300" r="8" fill="#e5e9ef"/>
+</svg>
+<div class="card">
+  <div>
+    <div class="eyebrow">Rates, oil and stocks through 2028</div>
+    <h1>Macro Scenario Tracker</h1>
+    <div class="sub">Five scenarios, re-scored every Monday.</div>
+  </div>
+  <div>
+    <div class="legend">
+      <span><i style="background:#43c08d"></i>Soft exit</span>
+      <span><i style="background:#64a0ec"></i>Deal, labor cracks</span>
+      <span><i style="background:#e2a93c"></i>Grind</span>
+      <span><i style="background:#ef8655"></i>Stagflation crack</span>
+      <span><i style="background:#f16b7d"></i>Escalation</span>
+    </div>
+    <div class="foot">Scenario estimates, not investment advice.</div>
+  </div>
+</div>
+</body>
+</html>
